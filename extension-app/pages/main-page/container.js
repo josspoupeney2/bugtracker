@@ -2,30 +2,30 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getInstances } from 'reducers/instances/actions';
+import { getBugs } from 'reducers/bugs/actions';
 import { Loader, Box } from 'symphony-bdk-ui-toolkit';
 import MainPage from '.';
 
 const MainPageContainer = (props) => {
   const {
-    loading, instances, actions, match,
+    loading, instances, actions, match, bugs
   } = props;
   let chosenTab = 0;
   if (match) {
     chosenTab = parseInt(match.params.tab, 10);
   }
 
-//  useEffect(() => {
-//    if (!instances) {
-//      actions.getInstances();
-//    }
-//  }, []);
+ useEffect(() => {
+   if (!bugs) {
+      actions.getBugs();
+    }
+ }, []);
 
-//  if (loading) {
-//    return <Box horizontal><Loader /></Box>;
-//  }
+  if (loading) {
+    return <Box horizontal><Loader /></Box>;
+ }
 
-  return (<MainPage instances={instances} chosenTab={chosenTab} />);
+  return (<MainPage bugs={bugs} chosenTab={chosenTab} />);
 };
 
 MainPageContainer.propTypes = {
@@ -42,12 +42,12 @@ MainPageContainer.defaultProps = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ getInstances }, dispatch),
+  actions: bindActionCreators({ getBugs }, dispatch),
 });
 
 const mapStateToProps = state => ({
-  loading: state.instances.loading,
-  instances: state.instances.instances,
+  loading: state.bugs.loading,
+  bugs: state.bugs.bugs,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPageContainer);

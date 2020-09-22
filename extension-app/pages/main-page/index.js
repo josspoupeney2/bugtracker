@@ -10,12 +10,12 @@ import BugList from './../../components/buglist'
 
 
 const MainPage = (props) => {
-  const {  } = props;
+  const {bugs} = props;
 
   return (
     <Box center>
         <Header />
-        <BugList />
+        <BugList bugs={bugs} />
         <Footer />
     </Box>
   );

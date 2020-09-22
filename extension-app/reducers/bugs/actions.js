@@ -5,7 +5,7 @@ import {
   GET_BUGS_FAILURE,
 } from './types';
 
-export function getBUGS() {
+export function getBugs() {
   return (dispatch) => {
     dispatch({ type: GET_BUGS });
     return RestClient.get('/api/bugs')

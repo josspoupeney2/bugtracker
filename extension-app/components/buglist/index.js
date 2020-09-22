@@ -53,12 +53,11 @@ const COLUMNS = [
 ]
 
 const BugList = (props) => {
-  const {
-  } = props;
+  const {bugs} = props;
 
   return (
     <Box>
-      <Table data={data} columns={COLUMNS} />
+      <Table data={bugs} columns={COLUMNS} />
     </Box>
   );
 };
