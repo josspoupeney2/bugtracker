@@ -6,6 +6,7 @@ import usersReducer from './users';
 import notifications from './notifications';
 import instances from './instances';
 import toast from './toast';
+import bugs from  './bugs';
 
 const rootReducer = combineReducers({
   user: usersReducer,
