@@ -13,6 +13,7 @@ const rootReducer = combineReducers({
   instances,
   notifications,
   toast,
+  bugs,
 });
 
 export default function configureStore(initialState) {
