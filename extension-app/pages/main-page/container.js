@@ -8,7 +8,7 @@ import MainPage from '.';
 
 const MainPageContainer = (props) => {
   const {
-    loading, instances, actions, match, bugs
+    loading, actions, match, bugs,
   } = props;
   let chosenTab = 0;
   if (match) {
@@ -30,14 +30,14 @@ const MainPageContainer = (props) => {
 
 MainPageContainer.propTypes = {
   loading: PropTypes.bool,
-  instances: PropTypes.array,
+  bugs: PropTypes.array,
   actions: PropTypes.object.isRequired,
   match: PropTypes.object,
 };
 
 MainPageContainer.defaultProps = {
   loading: false,
-  instances: null,
+  bugs: null,
   match: null,
 };
 
