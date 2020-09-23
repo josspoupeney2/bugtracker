@@ -5,7 +5,7 @@ import {
 } from './types';
 
 const INITIAL_STATE = {
-  instances: null,
+  bugs: null,
   loading: true,
   error: null,
 };
@@ -15,14 +15,14 @@ export default function (state = INITIAL_STATE, action) {
     case GET_BUGS:
       return {
         ...state,
-        instances: null,
+        bugs: null,
         loading: true,
         error: null,
       };
     case GET_BUGS_SUCCESS:
       return {
         ...state,
-        instances: action.payload,
+        bugs: action.payload,
         loading: false,
         error: null,
       };

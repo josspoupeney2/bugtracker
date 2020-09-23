@@ -22,9 +22,11 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
+  bugs: PropTypes.array
 };
 
 MainPage.defaultProps = {
+  bugs: null
 };
 
 export default MainPage;

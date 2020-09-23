@@ -36,7 +36,7 @@ MainPageContainer.propTypes = {
 };
 
 MainPageContainer.defaultProps = {
-  loading: false,
+  loading: true,
   bugs: null,
   match: null,
 };

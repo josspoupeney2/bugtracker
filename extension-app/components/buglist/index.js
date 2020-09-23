@@ -3,31 +3,6 @@ import PropTypes from 'prop-types';
 import { Box, Text, Table } from 'symphony-bdk-ui-toolkit';
 import { connect } from 'react-redux';
 
-const data = [
-    {
-      "id": 35,
-      "reportedBy": "Lucas Rovaris",
-      "createdDate": "20111999",
-      "status": "open",
-      "title": "my second bug",
-      "description": "this is a bug",
-      "priority": "high",
-      "lastupdate": "20111989220322",
-      "isDeleted": false
-    },
-    {
-          "id": 36,
-          "reportedBy": "LeBron James",
-          "createdDate": "20111999",
-          "status": "open",
-          "title": "my third bug",
-          "description": "this is a bug",
-          "priority": "high",
-          "lastupdate": "20111989220322",
-          "isDeleted": false
-        }
-]
-
 const COLUMNS = [
     {
         header: "id",
@@ -46,10 +21,10 @@ const COLUMNS = [
      },
 
      {
-              header: "Priority",
-              accessor: "priority",
-              width: "200"
-          }
+        header: "Priority",
+        accessor: "priority",
+        width: "200"
+     }
 ]
 
 const BugList = (props) => {
@@ -57,7 +32,7 @@ const BugList = (props) => {
 
   return (
     <Box>
-      <Table data={bugs} columns={COLUMNS} />
+      <Table data={bugs} columns={COLUMNS} searchable />
     </Box>
   );
 };
