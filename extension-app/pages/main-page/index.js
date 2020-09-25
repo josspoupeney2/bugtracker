@@ -1,32 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Box } from 'symphony-bdk-ui-toolkit';
+import { Box, NavTabs, Text } from 'symphony-bdk-ui-toolkit';
 import { BookBookmark, Bookmark } from 'styled-icons/boxicons-regular';
 import Header from './../../components/header'
 import Footer from './../../components/footer'
 import BugList from './../../components/buglist'
+import BuglistPage from './../buglist-page'
 
 
 
 const MainPage = (props) => {
-  const {bugs} = props;
-
+const {bugs} = props;
+debugger;
   return (
     <Box center>
         <Header />
-        <BugList bugs={bugs} />
-        <Footer />
+        <NavTabs activeTab={0}>
+                <div label="Bug List">
+                 <BuglistPage bugs={bugs} />
+                </div>
+              </NavTabs>
+             <Footer />
     </Box>
   );
 };
 
-MainPage.propTypes = {
+BuglistPage.propTypes = {
   bugs: PropTypes.array
 };
 
-MainPage.defaultProps = {
-  bugs: null
+BuglistPage.defaultProps = {
+  bugs: []
 };
 
 export default MainPage;

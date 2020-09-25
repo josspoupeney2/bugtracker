@@ -3,44 +3,25 @@ import PropTypes from 'prop-types';
 import { Box, Text, Table } from 'symphony-bdk-ui-toolkit';
 import { connect } from 'react-redux';
 
-const COLUMNS = [
-    {
-        header: "id",
-        accessor: "id",
-        width: "20"
-    },
-    {
-        header: "Title",
-        accessor: "title",
-        width: "400"
-    },
-     {
-         header: "Reported By",
-         accessor: "reportedBy",
-         width: "400"
-     },
-
-     {
-        header: "Priority",
-        accessor: "priority",
-        width: "200"
-     }
-]
 
 const BugList = (props) => {
-  const {bugs} = props;
+  const {bugs,columns} = props;
 
   return (
     <Box>
-      <Table data={bugs} columns={COLUMNS} searchable />
+      <Table data={bugs} columns={columns} searchable />
     </Box>
   );
 };
 
 BugList.propTypes = {
+  bugs: PropTypes.array,
+  columns: PropTypes.array
 };
 
 BugList.defaultProps = {
+  bugs: [],
+  columns: []
 };
 
 const mapDispatchToProps = () => ({});

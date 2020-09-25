@@ -119,6 +119,7 @@ const Routes = (props) => {
     return (
       <ContainerWrapper>
         <ThemeProvider theme={currentTheme}>
+         <div>
           <GlobalChanger />
           <ToasterProvider>
             <ModalProvider>
@@ -151,7 +152,8 @@ const Routes = (props) => {
               <ToastConnector />
             </ModalProvider>
           </ToasterProvider>
-        </ThemeProvider>
+           </div>
+     </ThemeProvider>
       </ContainerWrapper>
     );
   }

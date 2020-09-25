@@ -1,12 +1,11 @@
-[
+ [
   {
     "id": 34,
     "reportedBy": "Joss Poupeney",
     "createdDate": "20111999",
-    "status": "open",
+    "status": "Open",
     "title": "my first bug",
     "description": "this is a bug",
-    "priority": "high",
     "lastupdate": "20111989220322",
     "isDeleted": false
   },
@@ -14,20 +13,18 @@
     "id": 35,
     "reportedBy": "Lucas Rovaris",
     "createdDate": "20111999",
-    "status": "open",
+    "status": "Open",
     "title": "my second bug",
     "description": "this is a bug",
-    "priority": "high",
     "lastupdate": "20111989220322",
     "isDeleted": false
   },
   {
     "reportedBy": "Lucas Rovaris",
     "createdDate": "20111999",
-    "status": "open",
+    "status": "Open",
     "title": "my second bug",
     "description": "this is a bug",
-    "priority": "high",
     "lastupdate": "20111989220322",
     "id": 720,
     "isDeleted": false
@@ -35,10 +32,9 @@
   {
     "reportedBy": "Lucas Rovaris",
     "createdDate": "20111999",
-    "status": "open",
+    "status": "Open",
     "title": "my second bug",
     "description": "this is a bug",
-    "priority": "high",
     "lastupdate": "20111989220322",
     "id": 750,
     "isDeleted": false
