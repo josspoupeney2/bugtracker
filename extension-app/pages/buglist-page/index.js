@@ -1,5 +1,5 @@
 import React from 'react';
-import Buglist from './../../components/Buglist';
+import Buglist from './../../components/buglist';
 import PropTypes from 'prop-types';
 
 
@@ -29,7 +29,6 @@ const COLUMNS = [
 
 const BuglistPage = (props) => {
 const {bugs} = props;
-debugger;
   return (
     <Buglist columns={COLUMNS} data={bugs} />
   );

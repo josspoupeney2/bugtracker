@@ -1,27 +1,86 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Table } from 'symphony-bdk-ui-toolkit';
+import { Box, Text, Table, Cell, } from 'symphony-bdk-ui-toolkit';
 import { connect } from 'react-redux';
+import {CustomCellWrapper} from '../custom-cellwrapper';
+import styled from 'styled-components';
 
+const CellWrapperOpen = styled(Box)`
+  margin: 0px 19px;
+  align-items: start;
+  justify-content: center;
+  height: 100%;
+  background-color: red;
+  color: white;
+`;
+
+const CellWrapperClosed = styled(Box)`
+  margin: 0px 19px;
+  align-items: start;
+  justify-content: center;
+  height: 100%;
+  background-color: green;
+  color: white;
+`;
+
+const COLUMNS = [
+    {
+        header: "ID",
+        accessor: "id",
+        width: "80"
+    },
+    {
+        header: "Title",
+        accessor: "title",
+        width: "300"
+    },
+     {
+         header: "Reported By",
+         accessor: "reportedBy",
+         width: "300"
+     },
+
+     {
+        header: "Status",
+        accessor: "status",
+        Cell: ({cell}) => {
+           if (cell.value == "Open") {
+             return (
+              <CellWrapperOpen>
+
+                   {cell.value}
+
+              </CellWrapperOpen>
+             )
+           } else {
+            return (
+             <CellWrapperClosed>
+
+                  {cell.value}
+             </CellWrapperClosed>
+            )
+           }
+        }
+     }
+]
 
 const BugList = (props) => {
-  const {bugs,columns} = props;
+  const {bugs,} = props;
 
   return (
+
     <Box>
-      <Table data={bugs} columns={columns} searchable />
+      <Table data={bugs} columns={COLUMNS} searchable />
     </Box>
   );
 };
 
 BugList.propTypes = {
   bugs: PropTypes.array,
-  columns: PropTypes.array
 };
 
 BugList.defaultProps = {
   bugs: [],
-  columns: []
 };
 
 const mapDispatchToProps = () => ({});
