@@ -10,6 +10,7 @@ import {
 } from './types';
 
 export function getBugs() {
+  
   return (dispatch) => {
     dispatch({ type: GET_BUGS });
     return RestClient.get('/api/bugs')
