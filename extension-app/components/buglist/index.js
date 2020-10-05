@@ -30,38 +30,44 @@ const COLUMNS = [
         width: "80"
     },
     {
+        header: "Addon",
+        accessor: "addon",
+        width: "300"
+    },
+    {
         header: "Title",
         accessor: "title",
         width: "300"
     },
-     {
-         header: "Reported By",
-         accessor: "reportedBy",
-         width: "300"
-     },
-
-     {
-        header: "Status",
-        accessor: "status",
-        Cell: ({cell}) => {
-           if (cell.value == "Open") {
-             return (
-              <CellWrapperOpen>
-
-                   {cell.value}
-
-              </CellWrapperOpen>
-             )
-           } else {
+    {
+       header: "Status",
+       accessor: "status",
+       width: "80",
+       Cell: ({cell}) => {
+          if (cell.value == "Open") {
             return (
-             <CellWrapperClosed>
+             <CellWrapperOpen>
 
                   {cell.value}
-             </CellWrapperClosed>
+
+             </CellWrapperOpen>
             )
-           }
-        }
+          } else {
+           return (
+            <CellWrapperClosed>
+
+                 {cell.value}
+            </CellWrapperClosed>
+           )
+          }
+       }
+    },
+     {
+         header: "Changed",
+         accessor: "changed",
+         width: "300"
      }
+
 ]
 
 const BugList = (props) => {

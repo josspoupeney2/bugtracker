@@ -3,6 +3,10 @@ import {
   GET_BUGS,
   GET_BUGS_SUCCESS,
   GET_BUGS_FAILURE,
+  CREATE_BUG,
+  CREATE_BUG_SUCCESS,
+  CREATE_BUG_FAILURE,
+
 } from './types';
 
 export function getBugs() {
@@ -11,5 +15,15 @@ export function getBugs() {
     return RestClient.get('/api/bugs')
       .then(res => dispatch({ type: GET_BUGS_SUCCESS, payload: res.data }))
       .catch(error => dispatch({ type: GET_BUGS_FAILURE, payload: error.data }));
+  };
+}
+
+export function createBug(bug) {
+  debugger;
+  return (dispatch) => {
+    dispatch({ type: CREATE_BUG });
+    return RestClient.post ('/api/bugs', bug)
+      .then(res => dispatch({ type: CREATE_BUG_SUCCESS, payload: res.data }))
+      .catch(error => dispatch({ type: CREATE_BUG_FAILURE, payload: error.data }));
   };
 }

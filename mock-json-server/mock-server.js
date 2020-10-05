@@ -68,6 +68,7 @@ server.get('/api/bugs/:id', async (req, res) => {
 // Creates a single bug
 server.post('/api/bugs',  (req, res) => {
   // bug data
+  console.log('POST Bug!');
   const myBug = req.body;
   myBug.id = parseInt((Math.random() * 1000), 10 );
   myBug.isDeleted = false;

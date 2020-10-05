@@ -9,7 +9,9 @@ const Footer = (props) => {
 
   return (
     <Box>
+      <center>
      <Text>Site hosted by Acme</Text>
+     </center>
     </Box>
   );
 };

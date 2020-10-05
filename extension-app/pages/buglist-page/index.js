@@ -10,20 +10,24 @@ const COLUMNS = [
         width: "20"
     },
     {
+        header: "Addon",
+        accessor: "addon",
+        width: "300"
+    },
+    {
         header: "Title",
         accessor: "title",
         width: "400"
     },
-     {
+    {
+       header: "Status",
+       accessor: "status",
+       width: "200"
+    },
+    {
          header: "Reported By",
          accessor: "reportedBy",
          width: "400"
-     },
-
-     {
-        header: "Status",
-        accessor: "status",
-        width: "200"
      }
 ]
 

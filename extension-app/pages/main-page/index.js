@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Box, NavTabs, Text } from 'symphony-bdk-ui-toolkit';
 import { BookBookark, Bookmark } from 'styled-icons/boxicons-regular';
-import Header from './../../components/header'
-import Footer from './../../components/footer'
-import BugList from './../../components/buglist'
-import BuglistPage from './../buglist-page'
+import Header from './../../components/header';
+import Footer from './../../components/footer';
+import BugList from './../../components/buglist';
+import CreateBug from './../../components/createbug';
 
 
 
@@ -19,8 +19,8 @@ const {bugs} = props;
         <div label="Bug List">
            <BugList bugs={bugs} />
         </div>
-       <div label="Set Up">
-         <Text small>This is a content for Info</Text>
+       <div label="Create Bug">
+         <CreateBug />
        </div>
      </NavTabs>
         <Footer />
@@ -28,11 +28,11 @@ const {bugs} = props;
   );
 };
 
-BuglistPage.propTypes = {
+MainPage.propTypes = {
   bugs: PropTypes.array
 };
 
-BuglistPage.defaultProps = {
+MainPage.defaultProps = {
   bugs: []
 };
 

@@ -1,7 +1,9 @@
  [
   {
     "id": 34,
+    "addon": "Amphitheatre",
     "reportedBy": "Joss Poupeney",
+    "changed": "2014-06-27 13:12:40",
     "createdDate": "20111999",
     "status": "Closed",
     "title": "my first bug",
@@ -11,17 +13,22 @@
   },
   {
     "id": 35,
+    "addon": "Amphitheatre",
     "reportedBy": "Lucas Rovaris",
+    "changed": "2014-06-27 13:12:40",
     "createdDate": "20111999",
     "status": "Open",
     "title": "my second bug",
     "description": "this is a bug",
     "lastupdate": "20111989220322",
     "isDeleted": false
+
   },
   {
     "reportedBy": "Lucas Rovaris",
     "createdDate": "20111999",
+    "changed": "2014-06-27 13:12:40",
+    "addon": "Amphitheatre",
     "status": "Open",
     "title": "my second bug",
     "description": "this is a bug",
@@ -31,6 +38,8 @@
   },
   {
     "reportedBy": "Lucas Rovaris",
+    "addon": "Amphitheatre",
+    "changed": "2014-06-27 13:12:40",
     "createdDate": "20111999",
     "status": "Open",
     "title": "my second bug",
