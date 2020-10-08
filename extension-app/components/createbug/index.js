@@ -4,7 +4,7 @@ import { createBug } from 'reducers/bugs/actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+import moment from 'moment';
 
 
 const InputFieldController = (props) => {
@@ -36,14 +36,14 @@ const CreateBug = (props) => {
 const [values, setValues] = useState({});
 const {
    actions
-    } = props;
-const submitForm = (values) => {
-      actions.createBug(values);
-    }
+} = props;
+
+const submitForm = () => {
+  actions.createBug({...values, status: 'Open', changed: moment().format('YYYY-MM-DD hh:mm:ss')},);
+}
 
   return (
 
-  <form>
     <Box>
       <Text isTitle={true} style={{margin:'500px !important'}}>File a bug</Text>
         <Separator />
@@ -61,10 +61,11 @@ const submitForm = (values) => {
      </Box>
      <Box horizontal align="center">
         <Text style={{width:'150px'}}></Text>
-        <input type="submit" value="Submit" onClick={()=>submitForm(values)} />
+        <Button fill="filled" type="secondary" onClick={() => submitForm()}>
+         <span>Submit</span>
+        </Button>
      </Box>
     </Box>
-   </form>
   );
 };
 
@@ -79,4 +80,4 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
 });
 
-export default connect(mapDispatchToProps, mapStateToProps)(CreateBug);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateBug);

@@ -66,7 +66,7 @@ server.get('/api/bugs/:id', async (req, res) => {
 
 
 // Creates a single bug
-server.post('/api/bugs',  (req, res) => {
+server.post('/api/bug',  (req, res) => {
   // bug data
   console.log('POST Bug!');
   const myBug = req.body;

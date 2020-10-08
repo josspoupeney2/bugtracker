@@ -10,7 +10,7 @@ import {
 } from './types';
 
 export function getBugs() {
-  
+
   return (dispatch) => {
     dispatch({ type: GET_BUGS });
     return RestClient.get('/api/bugs')
@@ -20,11 +20,14 @@ export function getBugs() {
 }
 
 export function createBug(bug) {
-  debugger;
   return (dispatch) => {
     dispatch({ type: CREATE_BUG });
-    return RestClient.post ('/api/bugs', bug)
-      .then(res => dispatch({ type: CREATE_BUG_SUCCESS, payload: res.data }))
-      .catch(error => dispatch({ type: CREATE_BUG_FAILURE, payload: error.data }));
+    return RestClient.post('/api/bug', bug)
+      .then((res) => {
+        dispatch({ type: CREATE_BUG_SUCCESS, payload: { ...bug, id: res.data } });
+      })
+      .catch((error) => {
+        dispatch({ type: CREATE_BUG_FAILURE, payload: error });
+      });
   };
 }

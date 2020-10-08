@@ -36,8 +36,7 @@ export default function (state = INITIAL_STATE, action) {
         error: action.payload,
       };
   case CREATE_BUG:
-
- console.log('Create Bug')
+  console.log('Create Bug')
     return{
       ... state,
       loading: true,
@@ -45,9 +44,11 @@ export default function (state = INITIAL_STATE, action) {
     };
  case CREATE_BUG_SUCCESS:
  console.log('Create Bug Succes')
+ const newBug = action.payload;
   return{
     ... state,
     loading: false,
+    bugs: [...state.bugs, newBug],
     error: null,
   };
   case CREATE_BUG_FAILURE:
