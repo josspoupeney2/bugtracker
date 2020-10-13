@@ -24,7 +24,7 @@ export function createBug(bug) {
     dispatch({ type: CREATE_BUG });
     return RestClient.post('/api/bug', bug)
       .then((res) => {
-        dispatch({ type: CREATE_BUG_SUCCESS, payload: { ...bug, id: res.data } });
+        dispatch({ type: CREATE_BUG_SUCCESS, payload: res.data });
       })
       .catch((error) => {
         dispatch({ type: CREATE_BUG_FAILURE, payload: error });

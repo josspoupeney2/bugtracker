@@ -67,14 +67,12 @@ server.get('/api/bugs/:id', async (req, res) => {
 
 // Creates a single bug
 server.post('/api/bug',  (req, res) => {
-  // bug data
-  console.log('POST Bug!');
-  const myBug = req.body;
-  myBug.id = parseInt((Math.random() * 1000), 10 );
-  myBug.isDeleted = false;
-  listOfBugs.push(myBug)
+  const bug = req.body;
+  bug.id = parseInt((Math.random() * 1000), 10 );
+  bug.isDeleted = false;
+  listOfBugs.push(bug)
   writeLatestTmp();
-  res.json(myBug).status(200).end();
+  res.json(bug).status(200).end();
 });
 
 // updates a single bug

@@ -39,7 +39,7 @@ const {
 } = props;
 
 const submitForm = () => {
-  actions.createBug({...values, status: 'Open', changed: moment().format('YYYY-MM-DD hh:mm:ss')},);
+  actions.createBug({...values, status: 'Open', changed: moment().format('YYYY-MM-DD hh:mm:ss')});
 }
 
   return (
