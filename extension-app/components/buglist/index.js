@@ -66,17 +66,50 @@ const COLUMNS = [
          header: "Changed",
          accessor: "changed",
          width: "300"
-     }
+     },
+     {
+        id: 'actions',
+        sortable: false,
+        width: 50,
+        hasActions: true,
+      }
+];
 
-]
+
+const handleEditBug = (elem) => {
+  console.log("Edit " + elem.row.values.title)
+};
+const handleDeleteBug = (elem) => {
+  console.log("Delete " + elem.row.values.title)
+};
 
 const BugList = (props) => {
-  const {bugs,} = props;
+  const {bugs} = props;
+  const [tableData, setTableData] = useState([]);
+
+  useEffect( () => {
+   if (bugs.length > 0) {
+     const tempData = bugs.map(elem => {
+       elem.actionsMenu = [{
+          label: 'Edit',
+          callback: handleEditBug,
+          type: 'info'
+        },
+        {
+          label: 'Delete',
+          callback: handleDeleteBug,
+          type: 'error'
+        }];
+       return elem;
+     })
+     setTableData(tempData);
+   }
+ }, [bugs]);
 
   return (
 
     <Box>
-      <Table data={bugs} columns={COLUMNS} searchable />
+      <Table data={tableData} columns={COLUMNS} searchable />
     </Box>
   );
 };
