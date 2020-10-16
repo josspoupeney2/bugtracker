@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Table, Cell, } from 'symphony-bdk-ui-toolkit';
+import { Box, Text, Table, Cell, ModalConsumer} from 'symphony-bdk-ui-toolkit';
 import { connect } from 'react-redux';
 import {CustomCellWrapper} from '../custom-cellwrapper';
 import styled from 'styled-components';
+import EditModal from '../modal-component'
+
+var contextModal;
+
 
 const CellWrapperOpen = styled(Box)`
   margin: 0px 19px;
@@ -78,6 +82,11 @@ const COLUMNS = [
 
 const handleEditBug = (elem) => {
   console.log("Edit " + elem.row.values.title)
+  contextModal.showModal(
+            EditModal,
+            {},
+            {},
+          )
 };
 const handleDeleteBug = (elem) => {
   console.log("Delete " + elem.row.values.title)
@@ -107,10 +116,15 @@ const BugList = (props) => {
  }, [bugs]);
 
   return (
-
-    <Box>
-      <Table data={tableData} columns={COLUMNS} searchable />
-    </Box>
+    <ModalConsumer>
+          {context => {
+            contextModal = context;
+            return (
+            <Box>
+              <Table data={tableData} columns={COLUMNS} searchable />
+            </Box>
+          )}}
+    </ModalConsumer>
   );
 };
 

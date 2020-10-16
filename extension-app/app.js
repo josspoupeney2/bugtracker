@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import {
-  THEME_TYPES, Logger, RestClient,
+  THEME_TYPES, Logger, RestClient, ModalProvider
 } from 'symphony-bdk-ui-toolkit';
 import configureStore from './reducers';
 import Routes from './pages/routes';
@@ -83,7 +83,9 @@ const appWrapper = async () => {
       const store = configureStore();
       ReactDOM.render(
         <Provider store={store}>
-          <Routes userId={userId} jwtService={extendedUserInfoService || MOCK_USER_SERVICE} />
+        <ModalProvider>
+            <Routes userId={userId} jwtService={extendedUserInfoService || MOCK_USER_SERVICE} />
+        </ModalProvider>
         </Provider>, document.getElementById('root'),
       );
     }).catch((error) => {
