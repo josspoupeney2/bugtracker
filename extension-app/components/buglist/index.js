@@ -84,8 +84,8 @@ const handleEditBug = (elem) => {
   console.log("Edit " + elem.row.values.title)
   contextModal.showModal(
             EditModal,
-            {},
-            {},
+            {bug: elem.row.values},
+            {style:{width:'600px'}, modalTitle:'Edit Bug ' +elem.row.values.id},
           )
 };
 const handleDeleteBug = (elem) => {
