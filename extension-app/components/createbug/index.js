@@ -7,31 +7,6 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 
-const InputFieldController = (props) => {
-  const [input, setInput] = useState('');
-  const {
-    onChangeHandler
-  } = props;
-
-  function handleInput(e) {
-    setInput(e.target.value);
-    onChangeHandler(e.target.value);
-  }
-  return (
-    <Box vertical space={20}>
-      <div style={{ width: '24rem' }}>
-        <InputField
-          {...props}
-          value={input || props.value}
-          onChange={handleInput}
-        />
-      </div>
-    </Box>
-  );
-};
-
-
-
 const CreateBug = (props) => {
 const [values, setValues] = useState({});
 const {

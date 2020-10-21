@@ -1,30 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {Box, InputField, Text, Separator, Button, FormBox} from 'symphony-bdk-ui-toolkit';
-
-
-const InputFieldController = (props) => {
-  const [input, setInput] = useState('');
-  const {
-    onChangeHandler
-  } = props;
-
-  function handleInput(e) {
-    setInput(e.target.value);
-    onChangeHandler(e.target.value);
-  }
-  return (
-    <Box vertical space={20}>
-      <div style={{ width: '24rem' }}>
-        <InputField
-          {...props}
-          value={input || props.value}
-          onChange={handleInput}
-        />
-      </div>
-    </Box>
-  );
-};
+import {Box, Text, Separator, Button, FormBox} from 'symphony-bdk-ui-toolkit';
+import InputFieldController from "../inputfield-controller";
 
 
 const EditModal = (props) => {
@@ -34,17 +11,17 @@ const [values, setValues] = useState(bug);
 <Box>
      <Box horizontal align="center">
        <Text style={{width:'80px'}}>Addon Name:</Text>
-       <InputFieldController onChangeHandler={(e) => setValues({...values, addon: e})} id="addonName" type="text" value={bug.addon}/>
+       <InputFieldController showJoss={true} onChangeHandler={(e) => setValues({...values, addon: e})} id="addonName" type="text" value={bug.addon}/>
      </Box>
 
      <Box horizontal align="center">
        <Text style={{width:'80px'}}>Title:</Text>
-       <InputFieldController onChangeHandler={(e) => setValues({...values, title: e})} id="title" type="text" value={bug.title}/>
+       <InputFieldController showJoss={true} onChangeHandler={(e) => setValues({...values, title: e})} id="title" type="text" value={bug.title}/>
      </Box>
 
      <Box horizontal align="center">
-        <Text style={{width:'80px'}}>Status:</Text>
-        <InputFieldController onChangeHandler={(e) => setValues({...values, status: e})} id="status" type="text" value={bug.status}/>
+        <Text style={{width:'80px'}}>Description:</Text>
+        <InputFieldController showJoss={true} onChangeHandler={(e) => setValues({...values, description: e})} id="description" type="textarea" description={bug.description}/>
      </Box>
 
      <Box horizontal align="center">
