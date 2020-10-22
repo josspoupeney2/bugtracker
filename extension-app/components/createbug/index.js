@@ -19,10 +19,10 @@ const submitForm = () => {
 
   return (
 
-    <Box>
+<Box>
       <Text isTitle={true} style={{margin:'500px !important'}}>File a bug</Text>
         <Separator />
-      <Box horizontal align="center">
+              <Box horizontal align="center">
         <Text style={{width:'150px'}}>Addon Name:</Text>
         <InputFieldController onChangeHandler={(e) => setValues({...values, addon: e})} id="addonName" type="text" value=""/>
       </Box>
@@ -40,7 +40,7 @@ const submitForm = () => {
          <span>Submit</span>
         </Button>
      </Box>
-    </Box>
+</Box>
   );
 };
 
