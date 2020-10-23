@@ -6,6 +6,9 @@ import {
   CREATE_BUG,
   CREATE_BUG_SUCCESS,
   CREATE_BUG_FAILURE,
+  UPDATE_BUG,
+  UPDATE_BUG_SUCCESS,
+  UPDATE_BUG_FAILURE,
 
 } from './types';
 
@@ -28,6 +31,20 @@ export function createBug(bug) {
       })
       .catch((error) => {
         dispatch({ type: CREATE_BUG_FAILURE, payload: error });
+      });
+  };
+}
+
+export function  updateBug(bug) {
+  return (dispatch) => {
+    console.log('/api/bug/${bug.id}', bug)
+    dispatch({ type: UPDATE_BUG });
+    return RestClient.put('/api/bug/${bug.id}', bug)
+      .then((res) => {
+        dispatch({ type: UPDATE_BUG_SUCCESS, payload: res.data });
+      })
+      .catch((error) => {
+        dispatch({ type: UPDATE_BUG_FAILURE, payload: error });
       });
   };
 }

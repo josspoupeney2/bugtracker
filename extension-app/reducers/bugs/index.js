@@ -5,6 +5,9 @@ import {
   CREATE_BUG,
   CREATE_BUG_SUCCESS,
   CREATE_BUG_FAILURE,
+  UPDATE_BUG,
+  UPDATE_BUG_SUCCESS,
+  UPDATE_BUG_FAILURE,
 } from './types';
 
 const INITIAL_STATE = {
@@ -57,6 +60,29 @@ export default function (state = INITIAL_STATE, action) {
         loading: false,
         error: action.payload,
    };
+
+   case UPDATE_BUG:
+       console.log('Update Bug')
+       return{
+        ... state,
+        loading: true,
+        error: null,
+     };
+     case UPDATE_BUG_SUCCESS:
+          console.log('Update Bug Success')
+          return {
+            ... state,
+            loading: false,
+            bugs: [...state.bugs, action.payload],
+            error: null,
+     };
+    case UPDATE_BUG_FAILURE:
+         console.log('Update Bug Failure', action.payload)
+         return{
+          ... state,
+         loading: false,
+         error: action.payload,
+    };
 
     default:
       return state;

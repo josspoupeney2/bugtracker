@@ -76,7 +76,7 @@ server.post('/api/bug',  (req, res) => {
 });
 
 // updates a single bug
-server.put('/api/bugs/:id',  (req, res) => {
+server.put('/api/bug/:id',  (req, res) => {
   const index = listOfBugs.findIndex(item => item.id === req.params.id);
   if (index>=0) {
     listOfBugs[index] = req.body;

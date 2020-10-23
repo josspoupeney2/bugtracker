@@ -3,11 +3,23 @@ import PropTypes from 'prop-types';
 import {Box, Text, Separator, Button, FormBox} from 'symphony-bdk-ui-toolkit';
 import InputFieldController from "../inputfield-controller";
 import DropdownHandler from '../dropdown'
+import {OPTIONS} from '../../utils/system/app-const'
+import { updateBug } from 'reducers/bugs/actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-const OPTIONS = [{label:"Open", value:"Open"},{label:"Closed", value:"Closed"}];
+
+
 const EditModal = (props) => {
-const {bug} = props;
+const {bug,actions} = props;
 const [values, setValues] = useState(bug);
+
+const submitForm = () => {
+  console.log("submitForm")
+  actions.updateBug({...values, changed: moment().format('YYYY-MM-DD hh:mm:ss')});
+}
+
+
   return (
 <Box>
 
@@ -42,7 +54,15 @@ const [values, setValues] = useState(bug);
   )
 };
 
+EditModal.propTypes = {
+  actions: PropTypes.object.isRequired,
+};
 
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ updateBug }, dispatch),
+});
 
+const mapStateToProps = state => ({
+});
 
-export default  EditModal;
+export default connect(mapStateToProps, mapDispatchToProps)(EditModal);
