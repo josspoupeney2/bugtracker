@@ -4,7 +4,10 @@ import { Box, Text, Table, Cell, ModalConsumer} from 'symphony-bdk-ui-toolkit';
 import { connect } from 'react-redux';
 import {CustomCellWrapper} from '../custom-cellwrapper';
 import styled from 'styled-components';
-import EditModal from '../modal-component'
+import EditModal from '../modal-component';
+import DeleteModal from '../delete-modal'
+
+
 
 var contextModal;
 
@@ -90,6 +93,11 @@ const handleEditBug = (elem) => {
 };
 const handleDeleteBug = (elem) => {
   console.log("Delete " + elem.row.values.title)
+  contextModal.showModal(
+            DeleteModal,
+            {bug: elem.row.values},
+            {style:{width:'600px', height:'400px'}, modalTitle:'Edit Bug ' + elem.row.values.id + ' [' + elem.row.values.status.toUpperCase() + ']'} ,
+  )
 };
 
 const BugList = (props) => {

@@ -83,9 +83,9 @@ const appWrapper = async () => {
       const store = configureStore();
       ReactDOM.render(
         <Provider store={store}>
-        <ModalProvider>
-            <Routes userId={userId} jwtService={extendedUserInfoService || MOCK_USER_SERVICE} />
-        </ModalProvider>
+          <ModalProvider>
+              <Routes userId={userId} jwtService={extendedUserInfoService || MOCK_USER_SERVICE} />
+          </ModalProvider>
         </Provider>, document.getElementById('root'),
       );
     }).catch((error) => {

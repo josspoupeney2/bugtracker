@@ -39,7 +39,7 @@ export function  updateBug(bug) {
   return (dispatch) => {
     console.log('/api/bug/${bug.id}', bug)
     dispatch({ type: UPDATE_BUG });
-    return RestClient.put('/api/bug/${bug.id}', bug)
+    return RestClient.put(`/api/bug/${bug.id}`, bug)
       .then((res) => {
         dispatch({ type: UPDATE_BUG_SUCCESS, payload: res.data });
       })

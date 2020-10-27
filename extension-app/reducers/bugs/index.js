@@ -70,10 +70,13 @@ export default function (state = INITIAL_STATE, action) {
      };
      case UPDATE_BUG_SUCCESS:
           console.log('Update Bug Success')
+          const updatedElementIndex = state.bugs.findIndex(element => element.id === action.payload.id);
+          const newImmutableListOfBugs = [...state.bugs];
+          newImmutableListOfBugs[updatedElementIndex] = action.payload;
           return {
             ... state,
             loading: false,
-            bugs: [...state.bugs, action.payload],
+            bugs: newImmutableListOfBugs,
             error: null,
      };
     case UPDATE_BUG_FAILURE:

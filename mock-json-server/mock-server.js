@@ -77,14 +77,14 @@ server.post('/api/bug',  (req, res) => {
 
 // updates a single bug
 server.put('/api/bug/:id',  (req, res) => {
-  const index = listOfBugs.findIndex(item => item.id === req.params.id);
+  const index = listOfBugs.findIndex(item => item.id.toString() === req.params.id);
   if (index>=0) {
     listOfBugs[index] = req.body;
+    writeLatestTmp();
+    res.json(req.body).status(200).end();
   } else {
-    listOfBugs.push(req.body);
+    res.sendStatus(500);
   }
-  writeLatestTmp();
-  res.json({}).status(200).end();
 });
 
 //deletes a single bug

@@ -16,7 +16,7 @@ const InputFieldController = (props) => {
       <div style={{ width: '24rem' }}>
         <InputField
           {...props}
-          placeholder='This is an awesome placeholder'
+          placeholder='Type here'
           value={input}
           onChange={handleInput}
         />

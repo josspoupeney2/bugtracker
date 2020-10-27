@@ -7,18 +7,22 @@ import {OPTIONS} from '../../utils/system/app-const'
 import { updateBug } from 'reducers/bugs/actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import moment from 'moment';
 
 
 const EditModal = (props) => {
 const {bug,actions} = props;
 const [values, setValues] = useState(bug);
 
-const submitForm = () => {
-  console.log("submitForm")
-  actions.updateBug({...values, changed: moment().format('YYYY-MM-DD hh:mm:ss')});
+const submitForm = async () => {
+  console.log("submitForm", values)
+  try {
+    await actions.updateBug({...values, changed: moment().format('YYYY-MM-DD hh:mm:ss')});
+    props.hideModal();
+  } catch (e) {
+    console.log('crap', e);
+  }
 }
-
 
   return (
 <Box>
