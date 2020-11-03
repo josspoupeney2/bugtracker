@@ -8,6 +8,9 @@ import {
   UPDATE_BUG,
   UPDATE_BUG_SUCCESS,
   UPDATE_BUG_FAILURE,
+  DELETE_BUG,
+  DELETE_BUG_SUCCESS,
+  DELETE_BUG_FAILURE
 } from './types';
 
 const INITIAL_STATE = {
@@ -86,7 +89,28 @@ export default function (state = INITIAL_STATE, action) {
          loading: false,
          error: action.payload,
     };
-
+    case DELETE_BUG:
+        console.log('Delete Bug')
+        return{
+         ... state,
+         loading: true,
+         error: null,
+      };
+      case DELETE_BUG_SUCCESS:
+           console.log('Delete Bug Success')
+           return {
+             ... state,
+             loading: false,
+             bugs: action.payload,
+             error: null,
+      };
+      case DELETE_BUG_FAILURE:
+           console.log('Delete Bug Failure', action.payload)
+           return{
+            ... state,
+           loading: false,
+           error: action.payload,
+         }
     default:
       return state;
   }

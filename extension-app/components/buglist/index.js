@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Table, Cell, ModalConsumer} from 'symphony-bdk-ui-toolkit';
+import { Box, Text, Table, Cell, ModalConsumer,QuoteProductTag} from 'symphony-bdk-ui-toolkit';
 import { connect } from 'react-redux';
 import {CustomCellWrapper} from '../custom-cellwrapper';
 import styled from 'styled-components';
 import EditModal from '../modal-component';
-import DeleteModal from '../delete-modal'
+import Confirmation from '../confirmation-delete'
 
 
 
@@ -53,18 +53,19 @@ const COLUMNS = [
        Cell: ({cell}) => {
           if (cell.value == "Open") {
             return (
-             <CellWrapperOpen>
+              <QuoteProductTag mainInfo="Open" tagState="error">
+
 
                   {cell.value}
 
-             </CellWrapperOpen>
+            </QuoteProductTag>
             )
           } else {
            return (
-            <CellWrapperClosed>
+          <QuoteProductTag mainInfo="Closed" tagState="added">
 
                  {cell.value}
-            </CellWrapperClosed>
+            </QuoteProductTag>
            )
           }
        }
@@ -94,9 +95,9 @@ const handleEditBug = (elem) => {
 const handleDeleteBug = (elem) => {
   console.log("Delete " + elem.row.values.title)
   contextModal.showModal(
-            DeleteModal,
+            Confirmation,
             {bug: elem.row.values},
-            {style:{width:'600px', height:'400px'}, modalTitle:'Edit Bug ' + elem.row.values.id + ' [' + elem.row.values.status.toUpperCase() + ']'} ,
+            {style:{width:'500px', height:'270px'}, modalTitle:'Delete Bug ' + elem.row.values.id + ' [' + elem.row.values.status.toUpperCase() + ']'} ,
   )
 };
 
@@ -121,7 +122,7 @@ const BugList = (props) => {
      })
      setTableData(tempData);
    }
- }, [bugs]);
+ }, []);
 
   return (
     <ModalConsumer>

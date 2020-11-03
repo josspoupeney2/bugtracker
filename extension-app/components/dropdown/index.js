@@ -7,7 +7,7 @@ const DropdownHandler = (props) => {
 
   return (
     <Box style={{ width: '300px' }}>
-      <Dropdown {...props} value={chosen} onChange={changeChosen} />
+      <Dropdown  {...props} value={chosen} onChange={changeChosen} />
     </Box>
   );
 };

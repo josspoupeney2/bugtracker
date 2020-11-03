@@ -9,6 +9,9 @@ import {
   UPDATE_BUG,
   UPDATE_BUG_SUCCESS,
   UPDATE_BUG_FAILURE,
+  DELETE_BUG,
+  DELETE_BUG_SUCCESS,
+  DELETE_BUG_FAILURE,
 
 } from './types';
 
@@ -45,6 +48,20 @@ export function  updateBug(bug) {
       })
       .catch((error) => {
         dispatch({ type: UPDATE_BUG_FAILURE, payload: error });
+      });
+  };
+}
+
+export function  deleteBug(bug) {
+  return (dispatch) => {
+    console.log('/api/bug/${bug.id}', bug)
+    dispatch({ type: DELETE_BUG });
+    return RestClient.delete(`/api/bug/${bug.id}`, bug)
+      .then((res) => {
+        dispatch({ type: DELETE_BUG_SUCCESS, payload: res.data });
+      })
+      .catch((error) => {
+        dispatch({ type: DELETE_BUG_FAILURE, payload: error });
       });
   };
 }

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {Box, Text, Separator, Button, FormBox} from 'symphony-bdk-ui-toolkit';
+import {Box, Text, Separator, Button, FormBox, Dropdown} from 'symphony-bdk-ui-toolkit';
 import InputFieldController from "../inputfield-controller";
-import DropdownHandler from '../dropdown'
 import {OPTIONS} from '../../utils/system/app-const'
 import { updateBug } from 'reducers/bugs/actions';
 import { connect } from 'react-redux';
@@ -44,7 +43,9 @@ const submitForm = async () => {
 
      <Box horizontal align="center">
        <Text style={{width:'80px'}}>Status:</Text>
-       <DropdownHandler label="" options={OPTIONS} chosenValue={bug.status} />
+         <Box style={{ width: '300px' }}>
+           <Dropdown  label="" options={OPTIONS} chosenValue={values.status} onChange={(e) => setValues({...values, status: e.value})} />
+         </Box>
      </Box>
 
      <Box horizontal align="center">

@@ -11,7 +11,7 @@ const server = jsonServer.create();
 const middlewares = jsonServer.defaults();
 
 // Mock delay, for testing loading states. Units are in ms.
-const MOCK_DELAY = 1000;
+const MOCK_DELAY = 3000;
 
 const TMP_FILE = `${__dirname}/db/bugs.json`;
 let listOfBugs;
@@ -55,13 +55,13 @@ server.use((req, res, next) => {
 
 //Get the list of bugs
 server.get('/api/bugs', async (req, res) => {
-  res.json(listOfBugs).status(200).end();
+  send(() => res.json(listOfBugs).status(200).end());
 });
 
 //Get a single bug
 server.get('/api/bugs/:id', async (req, res) => {
   const index = listOfBugs.findIndex(item => item.id === parseInt(req.params.id));
-  res.json(listOfBugs[index]).status(200).end();
+  send(() => res.json(listOfBugs[index]).status(200).end());
 });
 
 
@@ -72,7 +72,7 @@ server.post('/api/bug',  (req, res) => {
   bug.isDeleted = false;
   listOfBugs.push(bug)
   writeLatestTmp();
-  res.json(bug).status(200).end();
+  send(() => res.json(bug).status(200).end());
 });
 
 // updates a single bug
@@ -81,21 +81,21 @@ server.put('/api/bug/:id',  (req, res) => {
   if (index>=0) {
     listOfBugs[index] = req.body;
     writeLatestTmp();
-    res.json(req.body).status(200).end();
+    send(() => res.json(req.body).status(200).end());
   } else {
-    res.sendStatus(500);
+    send(() => res.sendStatus(500));
   }
 });
 
 //deletes a single bug
 server.delete('/api/bug/:id',  (req, res) => {
     getLatestTmp();
-    const index = listOfBugs.findIndex(item => item.id === req.body.id);
+    const index = listOfBugs.findIndex(item => item.id.toString() === req.params.id);
     if (index>=0) {
       listOfBugs.splice(index, 1);
     }
     writeLatestTmp();
-    res.json({}).status(200).end();
+    send(() => res.json(listOfBugs).status(200).end());
 });
 
 // Project specific APIs
