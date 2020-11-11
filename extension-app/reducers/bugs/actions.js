@@ -1,4 +1,4 @@
-import { RestClient } from 'symphony-bdk-ui-toolkit';
+import { RestClient,} from 'symphony-bdk-ui-toolkit';
 import {
   GET_BUGS,
   GET_BUGS_SUCCESS,
@@ -28,6 +28,7 @@ export function getBugs() {
 export function createBug(bug) {
   return (dispatch) => {
     dispatch({ type: CREATE_BUG });
+  };
     return RestClient.post('/api/bug', bug)
       .then((res) => {
         dispatch({ type: CREATE_BUG_SUCCESS, payload: res.data });
@@ -36,7 +37,6 @@ export function createBug(bug) {
         dispatch({ type: CREATE_BUG_FAILURE, payload: error });
       });
   };
-}
 
 export function  updateBug(bug) {
   return (dispatch) => {

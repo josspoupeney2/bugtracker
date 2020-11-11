@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {DangerConfirmationModal} from 'symphony-bdk-ui-toolkit';
+import {DangerConfirmationModal, Loader} from 'symphony-bdk-ui-toolkit';
 import { deleteBug } from 'reducers/bugs/actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -14,6 +14,7 @@ const Confirmation = (props) => {
     try {
       await actions.deleteBug(props.bug);
       props.hideModal();
+      <Loader type="v2" size="small" color="#ff0057" />
     } catch (e) {
       console.log('crap', e);
     }

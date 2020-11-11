@@ -15,7 +15,7 @@ const {
 } = props;
 
 const submitForm = () => {
-  actions.createBug({...values, status: 'Open', changed: moment().format('YYYY-MM-DD hh:mm:ss')});
+  actions.createBug({...values, status: 'Open', changed: moment().format('YYYY-MM-DD')});
 }
 
   return (
@@ -36,10 +36,8 @@ const submitForm = () => {
         <InputFieldController onChangeHandler={(e) => setValues({...values, description: e})} id="description" type="textarea" value=""/>
      </Box>
      <Box horizontal align="center">
-        <Text style={{width:'150px'}}></Text>
-        <Button fill="filled" type="secondary" onClick={() => submitForm()}>
-         <span>Submit</span>
-        </Button>
+        <Text style={{width:'180px'}}></Text>
+       <Button onClick={() => submitForm()}>Submit</Button>
      </Box>
 </Box>
   );

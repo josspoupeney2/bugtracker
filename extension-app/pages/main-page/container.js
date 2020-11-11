@@ -22,9 +22,8 @@ const MainPageContainer = (props) => {
  }, []);
 
   if (loading) {
-    return <Box horizontal><Loader /></Box>;
+    return <Box horizontal><Loader type="v2" size="small" color="#ff0057"/></Box>;
  }
-
   return (<MainPage bugs={bugs} chosenTab={chosenTab} />);
 };
 

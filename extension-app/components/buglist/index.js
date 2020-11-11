@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Table, Cell, ModalConsumer,QuoteProductTag} from 'symphony-bdk-ui-toolkit';
+import { Box, Text, Table, Cell, ModalConsumer,QuoteProductTag,Loader} from 'symphony-bdk-ui-toolkit';
 import { connect } from 'react-redux';
 import {CustomCellWrapper} from '../custom-cellwrapper';
 import styled from 'styled-components';

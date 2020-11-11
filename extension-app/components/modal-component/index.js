@@ -51,7 +51,7 @@ const submitForm = async () => {
      <Box horizontal align="center">
         <Text style={{width:'200px'}}></Text>
         <Button fill="filled" type="secondary" onClick={() => submitForm()}>
-         <span>Submit</span>
+        <span>Submit</span>
         </Button>
      </Box>
 
